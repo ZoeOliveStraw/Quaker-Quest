@@ -118,7 +118,7 @@ public class @InputManager : IInputActionCollection, IDisposable
                 {
                     ""name"": ""Left Stick"",
                     ""id"": ""ed5cca97-7054-431c-89c7-31172f48850c"",
-                    ""path"": ""2DVector"",
+                    ""path"": ""2DVector(mode=2)"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -184,7 +184,7 @@ public class @InputManager : IInputActionCollection, IDisposable
                 {
                     ""name"": ""Gamepad Right Stick"",
                     ""id"": ""5dd40834-f8a1-4467-8315-8d85930edf94"",
-                    ""path"": ""2DVector"",
+                    ""path"": ""2DVector(mode=2)"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",

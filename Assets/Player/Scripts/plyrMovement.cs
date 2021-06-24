@@ -48,7 +48,8 @@ public class plyrMovement : MonoBehaviour
             Rotation();
             relativeMoveDir = Quaternion.Euler(0f,targetAngle,0f) * Vector3.forward;
             //controller.Move(relativeMoveDir.normalized * moveSpeed * Time.deltaTime);
-            rb.MovePosition(rb.position + (relativeMoveDir.normalized * moveSpeed * Time.deltaTime));
+            //rb.MovePosition(rb.position + (relativeMoveDir.normalized * moveSpeed * Time.deltaTime));
+            rb.MovePosition(rb.position + (relativeMoveDir.normalized * moveAxis.magnitude * moveSpeed * Time.deltaTime));
         }
     }
 

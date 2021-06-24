@@ -26,6 +26,7 @@ public class plyrJump : MonoBehaviour
 
     private Animator animator;
     private Vector2 moveVector;
+    private plyrSounds sounds;
     
 
     void Awake()
@@ -37,6 +38,7 @@ public class plyrJump : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
+        sounds = GetComponent<plyrSounds>();
         downVector = Vector3.down;
         upVector = Vector3.up;
         currentStamina = maxStamina;
@@ -89,6 +91,7 @@ public class plyrJump : MonoBehaviour
         {
             rb.AddForce(upVector * jumpForce);
             animator.Play("Angus_Flap");
+            sounds.JumpSound();
         }
         else
         {
