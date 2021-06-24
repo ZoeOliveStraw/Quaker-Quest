@@ -11,6 +11,7 @@ public class PlayerSpawner : MonoBehaviour
     [SerializeField] CinemachineFreeLook cameraRig;
     private Transform currentCheckpoint;
     private InputManager controls;
+    private Fade _fade;
 
     void Awake()
     {
@@ -20,9 +21,9 @@ public class PlayerSpawner : MonoBehaviour
     void Start()
     {
         currentCheckpoint = startPosition;
+        _fade = GameObject.Find("Game Manager").GetComponent<Fade>();
         SpawnAngus();
     }
-
     private void SpawnAngus()
     {
         playerInstance = Instantiate(angus,startPosition.position,Quaternion.identity);
@@ -32,12 +33,22 @@ public class PlayerSpawner : MonoBehaviour
 
     public void RespawnAngus()
     {
+        StartCoroutine(RespawnAngusCoroutine());
+    }
+
+    private IEnumerator RespawnAngusCoroutine()
+    {
+        float fadeDuration = _fade.GetFadeDuration();
+        _fade.FadeOut();
+        yield return new WaitForSeconds(fadeDuration);
         cameraRig.Follow = currentCheckpoint;
         cameraRig.LookAt = currentCheckpoint;
         Destroy(playerInstance);
         playerInstance = Instantiate(angus,currentCheckpoint.position,Quaternion.identity);
         cameraRig.Follow = playerInstance.transform;
         cameraRig.LookAt = playerInstance.transform;
+        _fade.FadeIn();
+        yield return new WaitForSeconds(fadeDuration);
     }
 
     public void SetCheckpoint(Transform t)

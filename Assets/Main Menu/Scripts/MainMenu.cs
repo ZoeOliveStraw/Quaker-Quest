@@ -8,8 +8,12 @@ public class MainMenu : MonoBehaviour
 {
     [SerializeField] GameObject pnlTopMenu;
     [SerializeField] GameObject pnlOptionsMenu;
+    private SceneLoader _manager;
 
-
+    private void Start() 
+    {
+        _manager = GameObject.Find("Game Manager").GetComponent<SceneLoader>();
+    }
 
     public void ActivateOptionsMenu()
     {
@@ -25,6 +29,6 @@ public class MainMenu : MonoBehaviour
 
     public void LoadFirstLevel()
     {
-        SceneManager.LoadScene(1);
+        _manager.LoadScene(1);
     }
 }
